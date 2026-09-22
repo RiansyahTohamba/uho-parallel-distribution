@@ -25,6 +25,7 @@ Service admin untuk manage akun UTBK dengan interface HTML.
 
 ### Option 1: Menggunakan Docker Compose (Recommended)
 
+#### Production Mode
 ```bash
 # Dari root project directory
 docker-compose -f spmb-microservice/docker-compose.yml up --build
@@ -34,9 +35,19 @@ Services akan berjalan:
 - Pendaftaran Maba Service: http://localhost:5001
 - Admin UTBK Service: http://localhost:5000
 
+#### Development Mode (dengan hot reload)
+```bash
+# Dari root project directory
+docker-compose -f spmb-microservice/docker-compose.dev.yml up --build
+```
+
+Mode development ini menggunakan volume mounting sehingga perubahan code akan otomatis di-reflect.
+
 Untuk menghentikan services:
 ```bash
 docker-compose -f spmb-microservice/docker-compose.yml down
+# atau untuk dev
+docker-compose -f spmb-microservice/docker-compose.dev.yml down
 ```
 
 ### Option 2: Menjalankan Secara Manual

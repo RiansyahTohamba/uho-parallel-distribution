@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  pendaftaran-maba:
+    build:
+      context: ./spmb-microservice/pendaftaran-maba-service
+      dockerfile: Dockerfile
+    container_name: pendaftaran-maba-service-dev
+    ports:
+      - "5001:5001"
+    volumes:
+      - ./spmb-microservice/pendaftaran-maba-service:/app
+    environment:
+      - FLASK_ENV=development
+      - FLASK_APP=app.py
+    networks:
+      - spmb-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5001/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+  admin-utbk:
+    build:
+      context: ./spmb-microservice/admin-utbk-service
+      dockerfile: Dockerfile
+    container_name: admin-utbk-service-dev
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./spmb-microservice/admin-utbk-service:/app
+    environment:
+      - FLASK_ENV=development
+      - FLASK_APP=app.py
+      - MABA_SERVICE_URL=http://pendaftaran-maba:5001
+    depends_on:
+      pendaftaran-maba:
+        condition: service_healthy
+    networks:
+      - spmb-network
+
+networks:
+  spmb-network:
+    driver: bridge
