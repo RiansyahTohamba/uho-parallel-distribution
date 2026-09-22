@@ -3,10 +3,11 @@ import requests
 from database import init_db, save_akun_utbk, get_all_akun_utbk, akun_exists
 import string
 import random
+import os
 
 app = Flask(__name__)
 
-MABA_SERVICE_URL = 'http://localhost:5001'
+MABA_SERVICE_URL = os.getenv('MABA_SERVICE_URL', 'http://localhost:5001')
 
 def generate_username(nama):
     cleaned_nama = ''.join(c.lower() if c.isalnum() else '' for c in nama)
