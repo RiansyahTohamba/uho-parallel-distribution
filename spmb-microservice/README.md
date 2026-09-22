@@ -23,19 +23,57 @@ Service admin untuk manage akun UTBK dengan interface HTML.
 
 ## Setup & Menjalankan
 
-### Pendaftaran Maba Service
+### Option 1: Menggunakan Docker Compose (Recommended)
+
+#### Production Mode
 ```bash
-cd pendaftaran-maba-service
+# Dari root project directory
+docker-compose -f spmb-microservice/docker-compose.yml up --build
+```
+
+Services akan berjalan:
+- Pendaftaran Maba Service: http://localhost:5001
+- Admin UTBK Service: http://localhost:5000
+
+#### Development Mode (dengan hot reload)
+```bash
+# Dari root project directory
+docker-compose -f spmb-microservice/docker-compose.dev.yml up --build
+```
+
+Mode development ini menggunakan volume mounting sehingga perubahan code akan otomatis di-reflect.
+
+Untuk menghentikan services:
+```bash
+docker-compose -f spmb-microservice/docker-compose.yml down
+# atau untuk dev
+docker-compose -f spmb-microservice/docker-compose.dev.yml down
+```
+
+### Option 2: Menjalankan Secara Manual
+
+#### Pendaftaran Maba Service
+```bash
+cd spmb-microservice/pendaftaran-maba-service
 pip install -r requirements.txt
 python app.py
 ```
 
-### Admin UTBK Service
+#### Admin UTBK Service
 ```bash
-cd admin-utbk-service
+cd spmb-microservice/admin-utbk-service
 pip install -r requirements.txt
 python app.py
 ```
 
 ## Database
 Kedua service menggunakan SQLite untuk menyimpan data.
+
+## Akses Interface Admin
+Setelah services berjalan, akses interface admin di: **http://localhost:5000**
+
+## Architecture
+- **Pendaftaran Maba Service**: REST API untuk data maba
+- **Admin UTBK Service**: Web interface yang mengkonsumsi API Pendaftaran Maba Service
+- **Komunikasi**: REST API (HTTP)
+- **Database**: SQLite (file-based)
