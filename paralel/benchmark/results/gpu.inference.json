@@ -1,0 +1,78 @@
+{
+  "meta": {
+    "device": "gpu",
+    "device_name": "NVIDIA GeForce RTX 3070 Ti Laptop GPU",
+    "tf_version": "2.21.0",
+    "keras_version": "3.15.1",
+    "cpu_threads_visible": 6,
+    "intra_op_threads": 0,
+    "tf32_enabled": true
+  },
+  "cases": {
+    "inference": {
+      "case": "inference",
+      "unit": "ms/batch",
+      "models": {
+        "cnn": {
+          "params": 323946,
+          "runs": [
+            {
+              "batch": 1,
+              "latency_ms": 2.7955,
+              "throughput_samples_s": 357.7,
+              "peak_vram_mb": 161.9
+            },
+            {
+              "batch": 8,
+              "latency_ms": 3.8536,
+              "throughput_samples_s": 2076.0,
+              "peak_vram_mb": 162.7
+            },
+            {
+              "batch": 64,
+              "latency_ms": 7.1536,
+              "throughput_samples_s": 8946.5,
+              "peak_vram_mb": 306.0
+            },
+            {
+              "batch": 512,
+              "latency_ms": 57.5998,
+              "throughput_samples_s": 8888.9,
+              "peak_vram_mb": 920.4
+            }
+          ]
+        },
+        "transformer": {
+          "params": 8281610,
+          "runs": [
+            {
+              "batch": 1,
+              "latency_ms": 7.6071,
+              "throughput_samples_s": 131.5,
+              "peak_vram_mb": 34.2
+            },
+            {
+              "batch": 8,
+              "latency_ms": 19.8853,
+              "throughput_samples_s": 402.3,
+              "peak_vram_mb": 42.7
+            },
+            {
+              "batch": 64,
+              "latency_ms": 139.6706,
+              "throughput_samples_s": 458.2,
+              "peak_vram_mb": 122.5
+            },
+            {
+              "batch": 512,
+              "latency_ms": 989.4007,
+              "throughput_samples_s": 517.5,
+              "peak_vram_mb": 609.0
+            }
+          ]
+        }
+      },
+      "wall_s": 76.71
+    }
+  }
+}

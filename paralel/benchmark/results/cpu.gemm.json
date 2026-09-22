@@ -1,0 +1,44 @@
+{
+  "meta": {
+    "device": "cpu",
+    "device_name": "x86_64",
+    "tf_version": "2.21.0",
+    "keras_version": "3.15.1",
+    "cpu_threads_visible": 6,
+    "intra_op_threads": 0,
+    "tf32_enabled": true
+  },
+  "cases": {
+    "gemm": {
+      "case": "gemm",
+      "unit": "GFLOP/s",
+      "runs": [
+        {
+          "n": 1024,
+          "gflops": 241.4,
+          "median_s": 0.008895826000298257,
+          "min_s": 0.005886186000680027,
+          "p90_s": 0.011512814000525395,
+          "iters": 20
+        },
+        {
+          "n": 2048,
+          "gflops": 370.5,
+          "median_s": 0.04637339349983449,
+          "min_s": 0.04101646500021161,
+          "p90_s": 0.07107027500023833,
+          "iters": 10
+        },
+        {
+          "n": 4096,
+          "gflops": 398.0,
+          "median_s": 0.3453451404993757,
+          "min_s": 0.3415279119999468,
+          "p90_s": 0.415170928000407,
+          "iters": 6
+        }
+      ],
+      "wall_s": 4.05
+    }
+  }
+}

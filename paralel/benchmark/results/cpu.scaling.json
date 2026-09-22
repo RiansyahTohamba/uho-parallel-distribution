@@ -1,0 +1,45 @@
+{
+  "meta": {
+    "device": "cpu",
+    "device_name": "x86_64",
+    "tf_version": "2.21.0",
+    "keras_version": "3.15.1",
+    "cpu_threads_visible": 6,
+    "intra_op_threads": 0,
+    "tf32_enabled": true
+  },
+  "cases": {
+    "scaling": {
+      "case": "scaling",
+      "unit": "sampel/s",
+      "params": 1462538,
+      "runs": [
+        {
+          "batch": 128,
+          "ms_per_step": 10.1737,
+          "samples_per_s": 12581.4,
+          "peak_vram_mb": null
+        },
+        {
+          "batch": 512,
+          "ms_per_step": 20.4815,
+          "samples_per_s": 24998.2,
+          "peak_vram_mb": null
+        },
+        {
+          "batch": 2048,
+          "ms_per_step": 48.7084,
+          "samples_per_s": 42046.1,
+          "peak_vram_mb": null
+        },
+        {
+          "batch": 8192,
+          "ms_per_step": 175.5489,
+          "samples_per_s": 46665.0,
+          "peak_vram_mb": null
+        }
+      ],
+      "wall_s": 7.88
+    }
+  }
+}

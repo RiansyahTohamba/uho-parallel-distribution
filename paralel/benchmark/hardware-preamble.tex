@@ -1,0 +1,16 @@
+% Preamble for the English companion report. Kindle geometry from the sibling
+% report, plus float tuning: nine full-width figures on a 6x8 page will each
+% claim a page of their own under LaTeX's defaults.
+\input{kindle-preamble.tex}
+
+\usepackage{float}
+\floatplacement{figure}{htbp}
+\renewcommand{\topfraction}{0.94}
+\renewcommand{\bottomfraction}{0.92}
+\renewcommand{\textfraction}{0.05}
+\renewcommand{\floatpagefraction}{0.80}
+\setcounter{topnumber}{2}
+\setcounter{bottomnumber}{2}
+\setcounter{totalnumber}{3}
+\setlength{\intextsep}{0.8em}
+\setlength{\textfloatsep}{1.0em}

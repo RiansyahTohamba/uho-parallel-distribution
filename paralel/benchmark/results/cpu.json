@@ -1,0 +1,251 @@
+{
+  "meta": {
+    "device": "cpu",
+    "device_name": "x86_64",
+    "tf_version": "2.21.0",
+    "keras_version": "3.15.1",
+    "cpu_threads_visible": 6,
+    "intra_op_threads": 0,
+    "tf32_enabled": true
+  },
+  "cases": {
+    "gemm": {
+      "case": "gemm",
+      "unit": "GFLOP/s",
+      "runs": [
+        {
+          "n": 1024,
+          "gflops": 241.4,
+          "median_s": 0.008895826000298257,
+          "min_s": 0.005886186000680027,
+          "p90_s": 0.011512814000525395,
+          "iters": 20
+        },
+        {
+          "n": 2048,
+          "gflops": 370.5,
+          "median_s": 0.04637339349983449,
+          "min_s": 0.04101646500021161,
+          "p90_s": 0.07107027500023833,
+          "iters": 10
+        },
+        {
+          "n": 4096,
+          "gflops": 398.0,
+          "median_s": 0.3453451404993757,
+          "min_s": 0.3415279119999468,
+          "p90_s": 0.415170928000407,
+          "iters": 6
+        }
+      ],
+      "wall_s": 4.05
+    },
+    "scaling": {
+      "case": "scaling",
+      "unit": "sampel/s",
+      "params": 1462538,
+      "runs": [
+        {
+          "batch": 128,
+          "ms_per_step": 10.1737,
+          "samples_per_s": 12581.4,
+          "peak_vram_mb": null
+        },
+        {
+          "batch": 512,
+          "ms_per_step": 20.4815,
+          "samples_per_s": 24998.2,
+          "peak_vram_mb": null
+        },
+        {
+          "batch": 2048,
+          "ms_per_step": 48.7084,
+          "samples_per_s": 42046.1,
+          "peak_vram_mb": null
+        },
+        {
+          "batch": 8192,
+          "ms_per_step": 175.5489,
+          "samples_per_s": 46665.0,
+          "peak_vram_mb": null
+        }
+      ],
+      "wall_s": 7.88
+    },
+    "overhead": {
+      "case": "overhead",
+      "unit": "sampel/s",
+      "runs": [
+        {
+          "case": "mlp_fit_spe1",
+          "unit": "sampel/s",
+          "params": 1462538,
+          "samples": 60000,
+          "batch": 128,
+          "epochs": 3,
+          "s_per_epoch": 5.64,
+          "samples_per_s": 10637.6,
+          "ms_per_step": 12.026,
+          "peak_vram_mb": null,
+          "steps_per_execution": 1
+        },
+        {
+          "case": "mlp_fit_spe32",
+          "unit": "sampel/s",
+          "params": 1462538,
+          "samples": 60000,
+          "batch": 128,
+          "epochs": 3,
+          "s_per_epoch": 4.655,
+          "samples_per_s": 12890.3,
+          "ms_per_step": 9.925,
+          "peak_vram_mb": null,
+          "steps_per_execution": 32
+        }
+      ],
+      "wall_s": 34.02
+    },
+    "xla": {
+      "case": "xla",
+      "unit": "sampel/s",
+      "runs": [
+        {
+          "case": "cnn_fit_xla0",
+          "unit": "sampel/s",
+          "params": 323946,
+          "samples": 10000,
+          "batch": 128,
+          "epochs": 2,
+          "s_per_epoch": 13.16,
+          "samples_per_s": 759.9,
+          "ms_per_step": 166.58,
+          "peak_vram_mb": null,
+          "jit_compile": false
+        },
+        {
+          "case": "cnn_fit_xla1",
+          "unit": "sampel/s",
+          "params": 323946,
+          "samples": 10000,
+          "batch": 128,
+          "epochs": 2,
+          "s_per_epoch": 21.607,
+          "samples_per_s": 462.8,
+          "ms_per_step": 273.504,
+          "peak_vram_mb": null,
+          "jit_compile": true
+        }
+      ],
+      "wall_s": 79.55
+    },
+    "mlp": {
+      "case": "mlp_train",
+      "unit": "sampel/s",
+      "params": 1462538,
+      "samples": 60000,
+      "batch": 128,
+      "epochs": 3,
+      "s_per_epoch": 5.58,
+      "samples_per_s": 10752.1,
+      "ms_per_step": 11.898,
+      "peak_vram_mb": null,
+      "wall_s": 18.71
+    },
+    "cnn": {
+      "case": "cnn_train",
+      "unit": "sampel/s",
+      "params": 323946,
+      "samples": 10000,
+      "batch": 128,
+      "epochs": 2,
+      "s_per_epoch": 13.009,
+      "samples_per_s": 768.7,
+      "ms_per_step": 164.672,
+      "peak_vram_mb": null,
+      "wall_s": 30.13
+    },
+    "transformer": {
+      "case": "transformer_train",
+      "unit": "sampel/s",
+      "params": 8281610,
+      "samples": 4000,
+      "batch": 32,
+      "epochs": 1,
+      "s_per_epoch": 55.028,
+      "samples_per_s": 72.7,
+      "ms_per_step": 440.226,
+      "peak_vram_mb": null,
+      "wall_s": 65.24
+    },
+    "inference": {
+      "case": "inference",
+      "unit": "ms/batch",
+      "models": {
+        "cnn": {
+          "params": 323946,
+          "runs": [
+            {
+              "batch": 1,
+              "latency_ms": 3.974,
+              "throughput_samples_s": 251.6,
+              "peak_vram_mb": null
+            },
+            {
+              "batch": 8,
+              "latency_ms": 7.7273,
+              "throughput_samples_s": 1035.3,
+              "peak_vram_mb": null
+            },
+            {
+              "batch": 64,
+              "latency_ms": 22.009,
+              "throughput_samples_s": 2907.9,
+              "peak_vram_mb": null
+            },
+            {
+              "batch": 512,
+              "latency_ms": 139.8281,
+              "throughput_samples_s": 3661.6,
+              "peak_vram_mb": null
+            }
+          ]
+        },
+        "transformer": {
+          "params": 8281610,
+          "runs": [
+            {
+              "batch": 1,
+              "latency_ms": 17.288,
+              "throughput_samples_s": 57.8,
+              "peak_vram_mb": null
+            },
+            {
+              "batch": 8,
+              "latency_ms": 55.2309,
+              "throughput_samples_s": 144.8,
+              "peak_vram_mb": null
+            },
+            {
+              "batch": 64,
+              "latency_ms": 280.7105,
+              "throughput_samples_s": 228.0,
+              "peak_vram_mb": null
+            },
+            {
+              "batch": 512,
+              "latency_ms": 2255.1877,
+              "throughput_samples_s": 227.0,
+              "peak_vram_mb": null
+            }
+          ]
+        }
+      },
+      "wall_s": 155.62
+    },
+    "bf16": {
+      "case": "bf16",
+      "skipped": "cpu",
+      "wall_s": 0.0
+    }
+  }
+}

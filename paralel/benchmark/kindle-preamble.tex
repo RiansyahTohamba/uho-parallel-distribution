@@ -1,0 +1,26 @@
+% Preamble untuk PDF ukuran Kindle (6 x 8 inci, margin tipis, teks besar).
+\usepackage[paperwidth=6in,paperheight=8in,left=0.42in,right=0.42in,top=0.5in,bottom=0.55in]{geometry}
+\usepackage{etoolbox}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{microtype}
+
+% Kode: font kecil + pembungkusan baris, supaya tidak terpotong di layar sempit.
+\usepackage{fvextra}
+\fvset{breaklines=true,breakanywhere=true,breaksymbolleft={},fontsize=\scriptsize}
+\AtBeginEnvironment{longtable}{\scriptsize}
+\AtBeginEnvironment{verbatim}{\scriptsize}
+
+% E-ink tidak menampilkan hyperlink berwarna dengan baik; pakai hitam saja.
+% hyperref baru dimuat template pandoc setelah blok ini, jadi penyetelannya ditunda.
+\AtBeginDocument{\hypersetup{linkcolor=black,urlcolor=black,citecolor=black}}
+
+\setlength{\emergencystretch}{3em}
+\setlength{\parskip}{0.45em}
+\setlength{\parindent}{0pt}
+\raggedbottom
+
+% Judul bab tidak perlu memaksa halaman baru di layar kecil.
+\usepackage{titlesec}
+\titlespacing*{\section}{0pt}{1.2em}{0.5em}
+\titlespacing*{\subsection}{0pt}{0.9em}{0.35em}

@@ -1,0 +1,78 @@
+{
+  "meta": {
+    "device": "cpu",
+    "device_name": "x86_64",
+    "tf_version": "2.21.0",
+    "keras_version": "3.15.1",
+    "cpu_threads_visible": 6,
+    "intra_op_threads": 0,
+    "tf32_enabled": true
+  },
+  "cases": {
+    "inference": {
+      "case": "inference",
+      "unit": "ms/batch",
+      "models": {
+        "cnn": {
+          "params": 323946,
+          "runs": [
+            {
+              "batch": 1,
+              "latency_ms": 3.974,
+              "throughput_samples_s": 251.6,
+              "peak_vram_mb": null
+            },
+            {
+              "batch": 8,
+              "latency_ms": 7.7273,
+              "throughput_samples_s": 1035.3,
+              "peak_vram_mb": null
+            },
+            {
+              "batch": 64,
+              "latency_ms": 22.009,
+              "throughput_samples_s": 2907.9,
+              "peak_vram_mb": null
+            },
+            {
+              "batch": 512,
+              "latency_ms": 139.8281,
+              "throughput_samples_s": 3661.6,
+              "peak_vram_mb": null
+            }
+          ]
+        },
+        "transformer": {
+          "params": 8281610,
+          "runs": [
+            {
+              "batch": 1,
+              "latency_ms": 17.288,
+              "throughput_samples_s": 57.8,
+              "peak_vram_mb": null
+            },
+            {
+              "batch": 8,
+              "latency_ms": 55.2309,
+              "throughput_samples_s": 144.8,
+              "peak_vram_mb": null
+            },
+            {
+              "batch": 64,
+              "latency_ms": 280.7105,
+              "throughput_samples_s": 228.0,
+              "peak_vram_mb": null
+            },
+            {
+              "batch": 512,
+              "latency_ms": 2255.1877,
+              "throughput_samples_s": 227.0,
+              "peak_vram_mb": null
+            }
+          ]
+        }
+      },
+      "wall_s": 155.62
+    }
+  }
+}

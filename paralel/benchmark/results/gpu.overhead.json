@@ -1,0 +1,46 @@
+{
+  "meta": {
+    "device": "gpu",
+    "device_name": "NVIDIA GeForce RTX 3070 Ti Laptop GPU",
+    "tf_version": "2.21.0",
+    "keras_version": "3.15.1",
+    "cpu_threads_visible": 6,
+    "intra_op_threads": 0,
+    "tf32_enabled": true
+  },
+  "cases": {
+    "overhead": {
+      "case": "overhead",
+      "unit": "sampel/s",
+      "runs": [
+        {
+          "case": "mlp_fit_spe1",
+          "unit": "sampel/s",
+          "params": 1462538,
+          "samples": 60000,
+          "batch": 128,
+          "epochs": 3,
+          "s_per_epoch": 6.334,
+          "samples_per_s": 9472.6,
+          "ms_per_step": 13.505,
+          "peak_vram_mb": 343.6,
+          "steps_per_execution": 1
+        },
+        {
+          "case": "mlp_fit_spe32",
+          "unit": "sampel/s",
+          "params": 1462538,
+          "samples": 60000,
+          "batch": 128,
+          "epochs": 3,
+          "s_per_epoch": 3.684,
+          "samples_per_s": 16285.5,
+          "ms_per_step": 7.856,
+          "peak_vram_mb": 305.0,
+          "steps_per_execution": 32
+        }
+      ],
+      "wall_s": 43.87
+    }
+  }
+}

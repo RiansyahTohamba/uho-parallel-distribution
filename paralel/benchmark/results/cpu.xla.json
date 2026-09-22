@@ -1,0 +1,46 @@
+{
+  "meta": {
+    "device": "cpu",
+    "device_name": "x86_64",
+    "tf_version": "2.21.0",
+    "keras_version": "3.15.1",
+    "cpu_threads_visible": 6,
+    "intra_op_threads": 0,
+    "tf32_enabled": true
+  },
+  "cases": {
+    "xla": {
+      "case": "xla",
+      "unit": "sampel/s",
+      "runs": [
+        {
+          "case": "cnn_fit_xla0",
+          "unit": "sampel/s",
+          "params": 323946,
+          "samples": 10000,
+          "batch": 128,
+          "epochs": 2,
+          "s_per_epoch": 13.16,
+          "samples_per_s": 759.9,
+          "ms_per_step": 166.58,
+          "peak_vram_mb": null,
+          "jit_compile": false
+        },
+        {
+          "case": "cnn_fit_xla1",
+          "unit": "sampel/s",
+          "params": 323946,
+          "samples": 10000,
+          "batch": 128,
+          "epochs": 2,
+          "s_per_epoch": 21.607,
+          "samples_per_s": 462.8,
+          "ms_per_step": 273.504,
+          "peak_vram_mb": null,
+          "jit_compile": true
+        }
+      ],
+      "wall_s": 79.55
+    }
+  }
+}
