@@ -1,22 +1,20 @@
-version: '3.8'
-
 services:
   pendaftaran-maba:
     build:
-      context: ./spmb-microservice/pendaftaran-maba-service
+      context: ./pendaftaran-maba-service
       dockerfile: Dockerfile
     container_name: pendaftaran-maba-service-dev
     ports:
-      - "5001:5001"
+      - "4001:4001"
     volumes:
-      - ./spmb-microservice/pendaftaran-maba-service:/app
+      - ./pendaftaran-maba-service:/app
     environment:
       - FLASK_ENV=development
       - FLASK_APP=app.py
     networks:
       - spmb-network
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:5001/health"]
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:4001/health')"]
       interval: 10s
       timeout: 5s
       retries: 3
@@ -24,17 +22,17 @@ services:
 
   admin-utbk:
     build:
-      context: ./spmb-microservice/admin-utbk-service
+      context: ./admin-utbk-service
       dockerfile: Dockerfile
     container_name: admin-utbk-service-dev
     ports:
-      - "5000:5000"
+      - "4467:4467"
     volumes:
-      - ./spmb-microservice/admin-utbk-service:/app
+      - ./admin-utbk-service:/app
     environment:
       - FLASK_ENV=development
       - FLASK_APP=app.py
-      - MABA_SERVICE_URL=http://pendaftaran-maba:5001
+      - MABA_SERVICE_URL=http://pendaftaran-maba:4001
     depends_on:
       pendaftaran-maba:
         condition: service_healthy

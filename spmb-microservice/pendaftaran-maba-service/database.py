@@ -1,7 +1,7 @@
 import sqlite3
 import os
 
-DB_FILE = 'database.db'
+DB_FILE = os.getenv('DB_FILE', 'database.db')
 
 def init_db():
     conn = sqlite3.connect(DB_FILE)
