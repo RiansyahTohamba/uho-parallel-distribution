@@ -5,7 +5,7 @@ services:
       dockerfile: Dockerfile
     container_name: pendaftaran-maba-service-dev
     ports:
-      - "4001:4001"
+      - "4001:5001"
     volumes:
       - ./pendaftaran-maba-service:/app
     environment:
@@ -14,7 +14,7 @@ services:
     networks:
       - spmb-network
     healthcheck:
-      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:4001/health')"]
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:5001/health')"]
       interval: 10s
       timeout: 5s
       retries: 3
@@ -26,13 +26,13 @@ services:
       dockerfile: Dockerfile
     container_name: admin-utbk-service-dev
     ports:
-      - "4467:4467"
+      - "4467:5000"
     volumes:
       - ./admin-utbk-service:/app
     environment:
       - FLASK_ENV=development
       - FLASK_APP=app.py
-      - MABA_SERVICE_URL=http://pendaftaran-maba:4001
+      - MABA_SERVICE_URL=http://pendaftaran-maba:5001
     depends_on:
       pendaftaran-maba:
         condition: service_healthy
