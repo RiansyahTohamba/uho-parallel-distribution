@@ -1,0 +1,22 @@
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "55110:55110"
+    environment:
+      - SECRET_KEY=${SECRET_KEY:-rahasia_super_aman}
+      - FLASK_DEBUG=1
+    volumes:
+      - ./backend:/app
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "5317:5317"
+    environment:
+      - API_TARGET=http://backend:55110
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    depends_on:
+      - backend

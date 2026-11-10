@@ -2,7 +2,7 @@
   import { onMount } from 'svelte';
   import { UserPlus, Edit2, Trash2, LogOut, Users } from 'lucide-svelte';
 
-  const API_URL = 'http://localhost:5317/api';
+  const API_URL = '/api';
 
   let token = '';
   let username = '';

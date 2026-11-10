@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "name": "Muhammad Riansyah Tohamba",
+    "prodi_tujuan": "Teknik Informatika",
+    "asal_sekolah": "SMAN 4 Kendari"
+  },
+  {
+    "id": 2,
+    "name": "Zaidul Qawi",
+    "prodi_tujuan": "Filsafat",
+    "asal_sekolah": "SMAN 2 kendari"
+  },
+  {
+    "id": 3,
+    "name": "Fathan",
+    "prodi_tujuan": "Filsafat",
+    "asal_sekolah": "SMAN 3 Jakarta"
+  }
+]
